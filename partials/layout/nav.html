@@ -1,0 +1,22 @@
+<nav class="nav-bar">
+  <div class="nav-bar__wrapper">
+    <div class="nav-bar__logo">
+      <a href="{{logo_link.url}}">
+        {{responsiveImage logo class="image image--responsive"}}
+      </a>
+    </div>
+    <div class="spacer"></div>
+    <ul>
+      {{#each links.children as |child|}}
+        <li>
+          <a href="{{child.link.url}}">
+            {{v child.link_text}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+    <button class="burger-button button button--icon button--dark button--borderless">
+      &#9776;
+    </button>
+  </div>
+</nav>

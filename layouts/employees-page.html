@@ -1,0 +1,15 @@
+{{#>layout title=prismic.content.results.0.data.meta_title.json.value}}
+  {{#with prismic.content.results.0.data as |content|}}
+    {{injectBackground "hero_bg" content.hero_image}}
+    <div class="hero block hero_bg">
+      <div class="block__content">
+        <h1 class="hero__title">{{v content.title}}</h1>
+      </div>
+    </div>
+  {{/with}}
+  <div class="row">
+    {{#each prismic.employees.results as |employee|}}
+      {{>components/employee employee=employee.data id=employee.id}}
+    {{/each}}
+  </div>
+{{/layout}}

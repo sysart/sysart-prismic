@@ -1,0 +1,16 @@
+<div class="block row services-list">
+  {{#eachItem services 'services' as |service child|}}
+    <div class="col-sm-4">
+      <div class="item item--square item--small-margin index-{{@index}}">
+        <a href="{{child.service.url}}">
+          <div class="item__content">
+            {{responsiveImage service.icon class="item__image" sizes="50vw"}}
+            <div class="item__title title title--medium">
+              {{v service.title}}
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  {{/eachItem}}
+</div>

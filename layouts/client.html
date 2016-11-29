@@ -1,0 +1,12 @@
+{{#>layout title=prismic.content.results.0.data.meta_title.json.value}}
+  {{#with prismic.content.results.0.data as |client|}}
+    {{injectBackground "hero_bg" client.hero_image}}
+    <div class="hero block hero_bg">
+    </div>
+    <div class="block block--text wysiwyg">
+      <div class="block__content">
+        {{t client.text}}
+      </div>
+    </div>
+  {{/with}}
+{{/layout}}

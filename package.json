@@ -20,16 +20,21 @@
     "npm": "3.5.3"
   },
   "dependencies": {
+    "browserify": "^13.1.1",
     "dotenv": "^2.0.0",
     "handlebars": "^4.0.5",
+    "lodash": "^4.17.2",
     "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-beautify": "0.0.7",
+    "metalsmith-browserify": "^0.1.0",
+    "metalsmith-concat": "^6.0.0",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-prismic-server": "^0.1.1",
     "metalsmith-s3": "git://github.com/mwishek/metalsmith-s3#9ee6df8f7a3b0bdedee616e248c5da0c3a0b2116",
     "metalsmith-sass": "^1.3.0",
-    "normalize.css": "^3.0.3"
+    "normalize.css": "^3.0.3",
+    "picturefill": "^3.0.2"
   }
 }

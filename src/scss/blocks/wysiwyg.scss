@@ -1,0 +1,44 @@
+@import 'variables';
+
+.wysiwyg {
+  &, * {
+    line-height: 1.7;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 27px;
+
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 11px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  ul {
+    color: $color-brand;
+    font-size: 16px;
+    font-weight: 200;
+    font-size: 0.9rem;
+    margin-bottom: 1em;
+    list-style: circle;
+    list-style-position: inside;
+    // padding-left: 1em;
+
+    li {
+
+    }
+  }
+}

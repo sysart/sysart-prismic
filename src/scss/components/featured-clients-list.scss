@@ -1,0 +1,9 @@
+@import 'mixins';
+
+@include use-up('sm') {
+  .featured-clients-list {
+    > .row:nth-child(2) {
+      flex-direction: row-reverse;
+    }
+  }
+}

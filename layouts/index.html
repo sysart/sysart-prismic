@@ -1,19 +1,13 @@
-<!doctype html>
-<html>
-  {{> head
-    title=prismic.content.results.0.data.meta_title.json.value
-  }}
-  <body>
-    {{> debug }}
-    {{> links }}
-    <main class="main">
-
-    {{#with prismic.content.results.0.data}}
-      <section>
-        {{{ title.html }}}
-        {{{ description.html }}}
-      </section>
-    {{/with}}
-    </main>
-  </body>
-</html>
+{{#>layout title=prismic.content.results.0.data.meta_title.json.value}}
+  {{#with prismic.content.results.0.data as |page|}}
+    {{injectBackground "hero_bg" page.hero_image}}
+    <div class="hero block hero_bg">
+      <div class="block__content">
+        <h1 class="hero__title">{{v page.hero_text}}</h1>
+      </div>
+    </div>
+    {{#each page.content.children}}
+      {{> (concat 'home/' sliceType)}}
+    {{/each}}
+  {{/with}}
+{{/layout}}

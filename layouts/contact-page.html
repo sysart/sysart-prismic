@@ -1,0 +1,32 @@
+{{#>layout title=prismic.content.results.0.data.meta_title.json.value}}
+  {{#with prismic.content.results.0.data as |content|}}
+    {{injectBackground "hero_bg" content.hero_image}}
+    <div class="hero block hero_bg">
+      <div class="block__content">
+        <h1 class="hero__title">{{v content.title}}</h1>
+      </div>
+    </div>
+    {{#with @root.prismic.global.results.0.data as |global|}}
+      <div class="block row no-gutter text text--small">
+        {{#each global.footer_addresses.children as |item|}}
+          <section class="col-md-4">
+            <div class="item item--center">
+              <div class="item__content">
+                {{responsiveImage item.icon class="item__image"}}
+                <h1 class="title title--small">{{v item.title_long}}</h1>
+                <address class="address">{{#each text.json.blocks}}{{text}}
+                  {{/each}}
+                </address>
+              </div>
+            </div>
+          </section>
+        {{/each}}
+      </div>
+      <div class="row">
+        {{#eachItem content.contact_persons.children 'employees' as |employee|}}
+          {{>components/employee employee=employee id=employee.id}}
+        {{/eachItem}}
+      </div>
+    {{/with}}
+  {{/with}}
+{{/layout}}

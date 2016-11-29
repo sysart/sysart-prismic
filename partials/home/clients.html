@@ -1,0 +1,23 @@
+<div class="block block--border featured-clients-list">
+  {{#eachItem children 'clients' as |client child|}}
+    {{injectBackground (concat child.client.json.id "_bg") client.link_image}}
+    <article class="row no-gutter">
+      <div class="col-sm-6 item item--square item--background {{child.client.json.id}}_bg">
+      </div>
+      <div class="col-sm-6 item item--square item--text">
+        <div class="item__content child-margins">
+          <div class="title title--highlight">
+            {{v client.link_subtitle}}
+          </div>
+          <h1 class="title title--medium">
+            {{v client.link_title}}
+          </h1>
+          {{t client.link_text}}
+          <div>
+            <a href="{{child.client.url}}" class="button">Lue lisää</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  {{/eachItem}}
+</div>

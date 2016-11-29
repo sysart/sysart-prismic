@@ -1,0 +1,33 @@
+@import 'mixins';
+@import 'variables';
+
+.title {
+  font-family: 'Campton', sans-serif;
+  $headings-font-weight: 700;
+  line-height: 1.3;
+}
+
+.title--highlight {
+  text-transform: uppercase;
+  color: $color-brand;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.title--large {
+  font-size: 40px;
+}
+
+.title--medium {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.title--small {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.title--light {
+  color: $text-color-white;
+}

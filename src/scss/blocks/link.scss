@@ -1,0 +1,11 @@
+@import 'variables';
+
+.link {
+  color: $color-brand;
+  transition: opacity 0.2s;
+
+  &:hover, &:focus, &:active {
+    color: $color-brand;
+    opacity: 0.7;
+  }
+}

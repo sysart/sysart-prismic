@@ -1,0 +1,17 @@
+<footer class="footer">
+  <div id="footer-wrapper">
+    <div class="block row no-gutter">
+      {{#each footer.children}}
+        {{>footer/address}}
+      {{/each}}
+      <div class="item col-sm-3">
+        <div class="item__content">
+          <img src="{{footer_image.url}}" class="image image--responsive image--center"/>
+        </div>
+      </div>
+      <div class="text-center copyright-info col-xs-12">
+        <p class="copyright">&copy; Sysart Oy 2016</p>
+      </div>
+    </div>
+  </div>
+</footer>

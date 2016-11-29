@@ -1,0 +1,19 @@
+@import 'variables';
+
+#footer-wrapper {
+  position: relative;
+  max-width: $width-page;
+  margin: 0 auto;
+}
+
+.footer {
+  background: $background-dark;
+  color: $text-color-white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+
+  .image {
+    max-height: 200px;
+  }
+}

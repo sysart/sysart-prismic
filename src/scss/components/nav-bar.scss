@@ -1,0 +1,100 @@
+@import 'mixins';
+@import 'variables';
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: white;
+  box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.9);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  @include use-up('sm') {
+    li {
+      &:nth-child(1) {
+        display: none;
+      }
+
+      + li {
+        margin-left: 1rem;
+      }
+    }
+
+    .burger-button {
+      display: none;
+    }
+  }
+
+  @include use-down('sm') {
+    ul {
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: $height-navbar;
+      overflow: hidden;
+      height: 0;
+      left: 0;
+      right: 0;
+      transition: height 0.2s;
+      box-shadow: 0px 20px 60px -20px rgba(0,0,0,0.6);
+    }
+
+    li {
+      opacity: 0;
+      transition: opacity 0.2s;
+      width: 100%;
+      text-align: center;
+
+      a {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      + li {
+        border-top: $border-light;
+      }
+    }
+
+    &.menu-open li {
+      opacity: 1;
+    }
+  }
+
+
+  a {
+    text-transform: uppercase;
+    color: $text-color-normal;
+    transition: 0.2s color;
+
+    &:hover {
+      color: $color-brand;
+    }
+  }
+
+  .spacer {
+    flex: 1 0 auto;
+  }
+}
+
+.nav-bar__wrapper {
+  max-width: $width-page;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  height: $height-navbar;
+}
+
+.nav-bar__logo {
+  max-width: 100px;
+}

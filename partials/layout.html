@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  {{>layout/head title=title}}
+  <body>
+    {{>debug}}
+    {{>layout/nav @root.prismic.global.results.0.data}}
+    <div id="wrapper">
+      {{#>@partial-block}}{{/@partial-block}}
+    </div>
+    {{>footer @root.prismic.global.results.0.data}}
+    <script src="/script/index.js"></script>
+  </body>
+</html>

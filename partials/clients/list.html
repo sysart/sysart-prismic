@@ -1,0 +1,14 @@
+<div class="block row no-gutter text text--small clients-list">
+  {{#eachItem clients 'clients' as |client child id|}}
+    {{injectBackground (concat id "_list_bg") client.link_image}}
+    <section class="col-xs-12 col-sm-4 col-md-3">
+      <div class="item item--small-margin item--square item--background {{id}}_list_bg">
+        <a href="{{child.client.url}}">
+          <div class="item__content no-child-margins">
+            {{v client.link_title}}
+          </div>
+        </a>
+      </div>
+    </section>
+  {{/eachItem}}
+</div>

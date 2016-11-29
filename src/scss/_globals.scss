@@ -1,0 +1,47 @@
+@import 'mixins';
+@import 'variables';
+
+#wrapper {
+  position: relative;
+  max-width: $width-page;
+  margin: $height-navbar auto 0;
+}
+
+html, body {
+  font-size: 18px;
+  font-family: 'Campton', sans-serif;
+
+  @include use-down('lg') {
+    font-size: 16px;
+  }
+}
+
+.child-margins {
+  > * {
+    margin: 0;
+  }
+
+  > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+}
+
+a {
+  color: $text-color-normal;
+
+  &:hover, &:focus, &:active {
+    color: $text-color-normal;
+  }
+}
+
+p {
+  line-height: 1.5;
+}

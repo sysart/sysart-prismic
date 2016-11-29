@@ -1,0 +1,39 @@
+@import 'variables';
+
+.button {
+  font-size: 16px;
+  color: $color-brand;
+  border: 1px solid $color-brand;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: 0.2s all;
+  background: none;
+  outline: none;
+  user-select: none;
+  opacity: 1;
+  transition: 0.2s opacity;
+  font-weight: 400;
+
+  &:hover {
+    color: $color-brand;
+    opacity: 0.7;
+  }
+}
+
+.button--dark {
+  color: $text-color-normal;
+}
+
+.button--borderless {
+  border: none;
+}
+
+.button--icon {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.button--block {
+  display: block;
+}

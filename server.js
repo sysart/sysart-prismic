@@ -15,10 +15,13 @@ var layouts = require('metalsmith-layouts');
 var markdown = require('metalsmith-markdown');
 var s3 = require('metalsmith-s3');
 var sass = require('metalsmith-sass');
+var concat = require('metalsmith-concat');
+var browserify = require('metalsmith-browserify');
 
 var metalsmithPrismicServer = require('metalsmith-prismic-server');
 
 var handlebarsHelpers = require('./plugins/handlebars-helpers');
+var inject = require('./plugins/inject');
 var utils = require('./utils/utils.js');
 
 var argv = require('process').argv;
@@ -47,29 +50,22 @@ var config = {
       return;
     }
 
-    // For prismic collection files append 'index.html'
-    // Leave it out for prismic link paths
-    var filename = doc.data ? 'index.html' : '';
+    if (doc.type === 'home-page') {
+      return '/';
+    }
+
+    if (!doc.uid) {
+      throw new Error(`Missing uid: ${doc.type}`);
+    }
 
     var language = utils.getLanguageFromTags(doc);
-    if (language) {
-      // *TEMPLATE-i18n* Use this linkResolver to generate i18n-links based on languages tags defined in Prismic
-      // *TEMPLATE-i18n* E.g. The paths for each blog-post in the fi/i18n-blog-post.md collection will be generated as:
-      // *TEMPLATE-i18n*      /fi/i18n-blog-post/mun-toka-blogipostaus/index.html
-      // *TEMPLATE-i18n* Note: if all documents in prismic have a language tag, the root needs to handled manually
-      switch (doc.type) {
-        case 'i18n-example':
-          return '/' + language + '/' + filename;
-        default:
-          return '/' + language + '/' + doc.type + '/' +  (doc.uid || doc.slug) + '/' + filename;
-      }
+    var type = utils.getLocalizedType(doc.type);
+    var filename = doc.data ? 'index.html' : '';
+
+    if (doc.type.match(/-page$/)) {
+      return `/${doc.uid}/${filename}`;
     } else {
-      switch (doc.type) {
-        case 'home':
-          return '/' + filename;
-        default:
-          return '/' + doc.type + '/' +  (doc.uid || doc.slug) + '/' + filename;
-      }
+      return `/${type}/${doc.uid}/${filename}`;
     }
   },
 
@@ -87,9 +83,17 @@ var config = {
         partials: 'partials',
         pattern: '**/*.html'
       }),
+      inject(),
       // Style using sass
       sass({
-        outputDir: 'style/'
+        outputDir: 'style/',
+        includePaths: [
+          'node_modules/bootstrap-sass/assets/stylesheets'
+        ]
+      }),
+      concat({
+        files: 'style/**/*.css',
+        output: 'style/style.css'
       }),
       // Autoprefix styles
       autoprefixer({
@@ -97,6 +101,9 @@ var config = {
         browsers: ['last 2 versions',
                    '> 5%']
       }),
+      browserify('script/index.js', [
+        './src/js/index.js'
+      ]),
       // Prettify output
       beautify({
         indent_size: 2,
@@ -108,7 +115,8 @@ var config = {
       }),
       // Ignore some files
       ignore([
-        '**/*.scss'
+        '**/*.scss',
+        'js/**/*.js'
       ])
     ],
     deploy: [

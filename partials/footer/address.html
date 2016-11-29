@@ -1,0 +1,10 @@
+{{#with children.[0]}}
+  <div class="item col-sm-3">
+    <div class="item__content">
+      <div class="title title--small">{{v title}}</div>
+      <address class="address">{{#each text.json.blocks}}{{text}}
+        {{/each}}
+      </address>
+    </div>
+  </div>
+{{/with}}

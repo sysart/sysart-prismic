@@ -1,0 +1,34 @@
+@import 'variables';
+@import 'mixins';
+
+.services-list {
+  .item.index-1 {
+    @include gradient-vertical(#FF8818, #F06712);
+  }
+
+  .item.index-2 {
+    @include gradient-vertical(#FCDB57, #FAA42F);
+  }
+
+  .item.index-3 {
+    @include gradient-vertical(#FA6700, #E14707);
+  }
+
+  .item__image {
+    transition: max-width 0.3s;
+  }
+
+  a {
+    color: $text-color-white;
+    transition: background 0.3s;
+
+    &:hover {
+      color: $text-color-white;
+      background: rgba(255, 255, 255, 0.1);
+
+      .item__image {
+        max-width: 75%;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{{#with children.[0]}}
+  <div class="block block--large">
+    <div class="block__content child-margins">
+      <h2 class="title title--highlight">{{v title }}</h2>
+      <div class="title title--medium">{{v subtitle }}</div>
+      <p>{{v text}}</p>
+      {{#if image}}
+        <div>
+          {{responsiveImage image class="image image--responsive"}}
+        </div>
+      {{/if}}
+      {{#if link}}
+        <div>
+          <a href="{{link.url}}" class="button">
+            {{v link_text}}
+          </a>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+{{/with}}

@@ -1,0 +1,21 @@
+@import 'variables';
+
+@mixin use-up($size) {
+  $sizes: map-get($breakpoints, $size);
+
+  @media (min-width: nth($sizes, 1)) {
+    @content;
+  }
+}
+
+@mixin use-down($size) {
+  $sizes: map-get($breakpoints, $size);
+
+  @media (max-width: nth($sizes, 1) - 1px) {
+    @content;
+  }
+}
+
+@mixin gradient-vertical($from, $to) {
+  background: linear-gradient(to bottom, $from, $to);
+}

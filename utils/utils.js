@@ -15,6 +15,22 @@ function getLanguageFromTags(doc) {
   return languageTag;
 }
 
+function getLocalizedType(type) {
+  switch (type) {
+    case 'services':
+      return 'palvelut';
+    case 'clients':
+      return 'asiakkaat';
+    case 'blog':
+      return 'blogi';
+    case 'employees':
+      return 'tekijat';
+    default:
+      return type;
+  }
+}
+
 module.exports = {
     getLanguageFromTags,
+    getLocalizedType
 };

@@ -1,0 +1,9 @@
+<div class="block row no-gutter text text--small">
+  {{#eachItem clients 'clients' as |client child id|}}
+    {{injectBackground (concat id "_other_list_bg") client.logo}}
+    <section class="col-xs-6 col-sm-3 col-md-2">
+      <div class="item item--square item--background item--contain {{id}}_other_list_bg">
+      </div>
+    </section>
+  {{/eachItem}}
+</div>

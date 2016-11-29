@@ -1,0 +1,35 @@
+{{#>layout title=prismic.content.results.0.data.meta_title.json.value}}
+  {{#with prismic.content.results.0.data as |service|}}
+    {{injectBackground "hero_bg" service.hero_image}}
+    <div class="hero block hero_bg">
+      <div class="block__content">
+        <h1 class="hero__title">{{v service.title}}</h1>
+      </div>
+    </div>
+    <div class="block block--text wysiwyg">
+      <div class="block__content">
+        {{t service.text}}
+      </div>
+    </div>
+    {{#if service.reference}}
+      {{#getItem service.reference 'clients' as |client|}}
+        {{injectBackground "reference_bg" client.link_image}}
+        <div class="block block--border">
+          <div class="row no-gutter">
+            <div class="col-sm-6 item item--square item--background reference_bg"></div>
+            <div class="col-sm-6 item item--square">
+              <div class="item__content child-margins">
+                <p>
+                  {{v service.reference_title}}
+                </p>
+                <a href="{{service.reference.url}}" class="button">
+                  {{v service.reference_link}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/getItem}}
+    {{/if}}
+  {{/with}}
+{{/layout}}

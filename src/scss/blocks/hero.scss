@@ -1,0 +1,33 @@
+@import 'mixins';
+
+.hero {
+  width: 100%;
+  padding-bottom: percentage(1/3);
+
+  @include use-down('sm') {
+    padding-bottom: 100%;
+  };
+
+  color: white;
+
+  .block__content {
+    max-width: 920px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    padding-top: .5em;
+    padding-bottom: .5em;
+  }
+}
+
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 600;
+
+  @include use-down('sm') {
+    font-size: 28px;
+  }
+}
