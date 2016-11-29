@@ -1,3 +1,5 @@
+Cloned from: https://github.com/futurice/metalsmith-prismic-template
+
 # Metalsmith Prismic template
 
 An opinionated, bare bones template for static site generation from [prismic.io](https://prismic.io/) using [metalsmith](https://metalsmith.io/) and deploying to Amazon S3. Read more from the blog post [CMS done right, vol 3.](http://futurice.com/blog/cms-done-right-vol-3)
