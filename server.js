@@ -122,7 +122,7 @@ var config = {
     deploy: [
       s3({
         action: 'write',
-        bucket: provess.env.S3_BUCKET,
+        bucket: process.env.S3_BUCKET,
         region: process.env.S3_REGION
       })
     ]
