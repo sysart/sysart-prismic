@@ -23,8 +23,8 @@
         {{/each}}
       </div>
       <div class="row">
-        {{#eachItem content.contact_persons.children 'employees' as |employee|}}
-          {{>components/employee employee=employee id=employee.id}}
+        {{#eachItem content.contact_persons.children 'employees' as |employee child id|}}
+          {{>components/employee employee=employee id=id}}
         {{/eachItem}}
       </div>
     {{/with}}
