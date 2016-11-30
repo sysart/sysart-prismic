@@ -13,11 +13,12 @@ var beautify = require('metalsmith-beautify');
 var ignore = require('metalsmith-ignore');
 var layouts = require('metalsmith-layouts');
 var markdown = require('metalsmith-markdown');
-var s3 = require('metalsmith-s3');
 var sass = require('metalsmith-sass');
 var concat = require('metalsmith-concat');
 var browserify = require('metalsmith-browserify');
 var cloudfront = require('metalsmith-cloudfront');
+
+var s3 = require('./plugins/s3');
 
 var metalsmithPrismicServer = require('metalsmith-prismic-server');
 
@@ -123,9 +124,19 @@ var config = {
     ],
     deploy: [
       s3({
-        action: 'write',
         bucket: process.env.S3_BUCKET,
-        region: process.env.S3_REGION
+        region: process.env.S3_REGION,
+        params: {
+          '**/*.html': {
+            CacheControl: 'max-age=3600, must re-validate' // hour
+          },
+          '**/*.{js,css}': {
+            CacheControl: 'max-age=1209600, must re-validate' // two weeks
+          },
+          'fonts/*': {
+            CacheControl: 'max-age=1209600, must re-validate' // two weeks
+          }
+        }
       }),
       cloudfront({
         dist: process.env.CLOUDFRONT_ID,
