@@ -17,6 +17,7 @@ var s3 = require('metalsmith-s3');
 var sass = require('metalsmith-sass');
 var concat = require('metalsmith-concat');
 var browserify = require('metalsmith-browserify');
+var cloudfront = require('metalsmith-cloudfront');
 
 var metalsmithPrismicServer = require('metalsmith-prismic-server');
 
@@ -27,6 +28,7 @@ var utils = require('./utils/utils.js');
 var argv = require('process').argv;
 
 var config = {
+  release: process.env.PRISMIC_RELEASE,
   // See src/config.js in metalsmith-prismic-server for all options
 
   /**
@@ -124,6 +126,12 @@ var config = {
         action: 'write',
         bucket: process.env.S3_BUCKET,
         region: process.env.S3_REGION
+      }),
+      cloudfront({
+        dist: process.env.CLOUDFRONT_ID,
+        paths: [
+          '/*'
+        ]
       })
     ]
   }

@@ -27,6 +27,7 @@
     "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-beautify": "0.0.7",
     "metalsmith-browserify": "^0.1.0",
+    "metalsmith-cloudfront": "0.0.3",
     "metalsmith-concat": "^6.0.0",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.2",
